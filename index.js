@@ -38,8 +38,41 @@ class Arr {
         }
         return newArr.length === this.array.length;
     }
+    someCus(func) {
+        for (let i = 0; i < this.array.length; i++) {
+            const item = this.array[i];
+            const bool = func(item);
+            if (bool) return true;
+        }
+        return false;
+    }
 }
 const array = new Arr([1, 2, 3, 4]);
-console.log(array.everyCus((x) => typeof x === 'number'));
-console.log(array.everyCus((x) => typeof x !== 'number'));
-console.log(array.everyCus((x) => x > 2));
+console.log(
+    'every',
+    array.everyCus((x) => typeof x === 'number')
+);
+console.log(
+    'every',
+    array.everyCus((x) => typeof x !== 'number')
+);
+console.log(
+    'every',
+    array.everyCus((x) => x > 2)
+);
+console.log(
+    'some',
+    array.someCus((x) => typeof x === 'number')
+);
+console.log(
+    'some',
+    array.someCus((x) => typeof x !== 'number')
+);
+console.log(
+    'some',
+    array.someCus((x) => x > 2)
+);
+console.log(
+    'some',
+    array.someCus((x) => x > 40)
+);
