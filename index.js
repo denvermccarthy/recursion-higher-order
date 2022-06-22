@@ -1,78 +1,85 @@
 class Arr {
-    array;
-    constructor(input) {
-        this.array = [...input];
+  array;
+  constructor(input) {
+    this.array = [...input];
+  }
+  forEachCus(func) {
+    for (let i = 0; i < this.array.length; i++) {
+      func(this.array[i]);
     }
-    forEachCus(func) {
-        for (let i = 0; i < this.array.length; i++) {
-            func(this.array[i]);
-        }
+  }
+  mapCus(func) {
+    const newArr = [];
+    for (let i = 0; i < this.array.length; i++) {
+      const value = func(this.array[i]);
+      newArr.push(value);
     }
-    mapCus(func) {
-        const newArr = [];
-        for (let i = 0; i < this.array.length; i++) {
-            const value = func(this.array[i]);
-            newArr.push(value);
-        }
-        return newArr;
+    return newArr;
+  }
+  filterCus(func) {
+    const newArr = [];
+    for (let i = 0; i < this.array.length; i++) {
+      const item = this.array[i];
+      const bool = func(item);
+      if (bool) {
+        newArr.push(item);
+      }
     }
-    filterCus(func) {
-        const newArr = [];
-        for (let i = 0; i < this.array.length; i++) {
-            const item = this.array[i];
-            const bool = func(item);
-            if (bool) {
-                newArr.push(item);
-            }
-        }
-        return newArr;
+    return newArr;
+  }
+  everyCus(func) {
+    const newArr = [];
+    for (let i = 0; i < this.array.length; i++) {
+      const item = this.array[i];
+      const bool = func(item);
+      if (bool) {
+        newArr.push(item);
+      }
     }
-    everyCus(func) {
-        const newArr = [];
-        for (let i = 0; i < this.array.length; i++) {
-            const item = this.array[i];
-            const bool = func(item);
-            if (bool) {
-                newArr.push(item);
-            }
-        }
-        return newArr.length === this.array.length;
+    return newArr.length === this.array.length;
+  }
+  someCus(func) {
+    for (let i = 0; i < this.array.length; i++) {
+      const item = this.array[i];
+      const bool = func(item);
+      if (bool) return true;
     }
-    someCus(func) {
-        for (let i = 0; i < this.array.length; i++) {
-            const item = this.array[i];
-            const bool = func(item);
-            if (bool) return true;
-        }
-        return false;
-    }
+    return false;
+  }
 }
 const array = new Arr([1, 2, 3, 4]);
 console.log(
-    'every',
-    array.everyCus((x) => typeof x === 'number')
+  "every",
+  array.everyCus((x) => typeof x === "number")
 );
 console.log(
-    'every',
-    array.everyCus((x) => typeof x !== 'number')
+  "every",
+  array.everyCus((x) => typeof x !== "number")
 );
 console.log(
-    'every',
-    array.everyCus((x) => x > 2)
+  "every",
+  array.everyCus((x) => x > 2)
 );
 console.log(
-    'some',
-    array.someCus((x) => typeof x === 'number')
+  "some",
+  array.someCus((x) => typeof x === "number")
 );
 console.log(
-    'some',
-    array.someCus((x) => typeof x !== 'number')
+  "some",
+  array.someCus((x) => typeof x !== "number")
 );
 console.log(
-    'some',
-    array.someCus((x) => x > 2)
+  "some",
+  array.someCus((x) => x > 2)
 );
 console.log(
-    'some',
-    array.someCus((x) => x > 40)
+  "some",
+  array.someCus((x) => x > 40)
 );
+
+const fib = (n) => {
+  if (n < 2) {
+    return n;
+  }
+  return fib(n - 2) + fib(n - 1);
+};
