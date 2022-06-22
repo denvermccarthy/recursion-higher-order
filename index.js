@@ -135,3 +135,11 @@ function sum(n) {
     return recursion(n);
 }
 console.log('sum(5)', sum(5));
+
+function repeat(txt, n) {
+    if (n < 1) {
+        return txt;
+    }
+    return repeat(txt, n - 1) + txt;
+}
+console.log('repeat', repeat('nice ', 4));
