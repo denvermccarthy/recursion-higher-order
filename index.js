@@ -1,4 +1,4 @@
-import { testEvery, testSome } from "./tests";
+// import { testEvery, testSome } from "./tests";
 
 class Arr {
   array;
@@ -50,8 +50,8 @@ class Arr {
   }
 }
 const array = new Arr([1, 2, 3, 4]);
-testEvery();
-testSome();
+// testEvery();
+// testSome();
 
 const fib = (n) => {
   if (n < 2) {
@@ -60,7 +60,6 @@ const fib = (n) => {
   return fib(n - 2) + fib(n - 1);
 };
 console.log(fib(37));
-
 //attempted memoization solution, it works, but it is much much slower. Any idea why?
 // if (n < 2) {
 //   return n;
@@ -72,3 +71,14 @@ console.log(fib(37));
 
 // cache[n] = fib(n - 2) + fib(n - 1);
 // return cache[n];
+
+const addPunc = (punc) => (sentence) => sentence + punc;
+
+const addExcitement = addPunc("!!!");
+console.log(addExcitement("Hello World"));
+// Hello World!!!
+const addUnsure = addPunc("?!?");
+console.log(addUnsure("Hello World"));
+// Hello World?!?
+console.log(addUnsure("Pokemon, catch em all"));
+// Pokemon, catch em all?!?
