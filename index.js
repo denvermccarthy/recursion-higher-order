@@ -1,3 +1,5 @@
+import { testEvery, testSome } from "./tests";
+
 class Arr {
   array;
   constructor(input) {
@@ -48,34 +50,8 @@ class Arr {
   }
 }
 const array = new Arr([1, 2, 3, 4]);
-console.log(
-  "every",
-  array.everyCus((x) => typeof x === "number")
-);
-console.log(
-  "every",
-  array.everyCus((x) => typeof x !== "number")
-);
-console.log(
-  "every",
-  array.everyCus((x) => x > 2)
-);
-console.log(
-  "some",
-  array.someCus((x) => typeof x === "number")
-);
-console.log(
-  "some",
-  array.someCus((x) => typeof x !== "number")
-);
-console.log(
-  "some",
-  array.someCus((x) => x > 2)
-);
-console.log(
-  "some",
-  array.someCus((x) => x > 40)
-);
+testEvery();
+testSome();
 
 const fib = (n) => {
   if (n < 2) {
@@ -83,3 +59,16 @@ const fib = (n) => {
   }
   return fib(n - 2) + fib(n - 1);
 };
+console.log(fib(37));
+
+//attempted memoization solution, it works, but it is much much slower. Any idea why?
+// if (n < 2) {
+//   return n;
+// }
+// const cache = {};
+// if (cache[n]) {
+//   return cache[n];
+// }
+
+// cache[n] = fib(n - 2) + fib(n - 1);
+// return cache[n];
